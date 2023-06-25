@@ -17,7 +17,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
   */
  
  #include <linux/signal.h>
-@@ -18,32 +25,34 @@
+@@ -19,32 +26,34 @@
  #include <linux/ip.h>
  #include <linux/ipv6.h>
  #include <net/ip6_checksum.h>
@@ -62,7 +62,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define PLA_DMY_REG0		0xc0b0
  #define PLA_FMC			0xc0b4
  #define PLA_CFG_WOL		0xc0b6
-@@ -54,9 +63,14 @@
+@@ -55,9 +64,14 @@
  #define PLA_BDC_CR		0xd1a0
  #define PLA_TEREDO_TIMER	0xd2cc
  #define PLA_REALWOW_TIMER	0xd2e8
@@ -77,7 +77,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define PLA_EFUSE_DATA		0xdd00
  #define PLA_EFUSE_CMD		0xdd02
  #define PLA_LEDSEL		0xdd90
-@@ -66,6 +80,8 @@
+@@ -67,6 +81,8 @@
  #define PLA_LWAKE_CTRL_REG	0xe007
  #define PLA_GPHY_INTR_IMR	0xe022
  #define PLA_EEE_CR		0xe040
@@ -86,7 +86,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define PLA_EEEP_CR		0xe080
  #define PLA_MAC_PWR_CTRL	0xe0c0
  #define PLA_MAC_PWR_CTRL2	0xe0ca
-@@ -76,6 +92,7 @@
+@@ -77,6 +93,7 @@
  #define PLA_TCR1		0xe612
  #define PLA_MTPS		0xe615
  #define PLA_TXFIFO_CTRL		0xe618
@@ -94,7 +94,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define PLA_RSTTALLY		0xe800
  #define PLA_CR			0xe813
  #define PLA_CRWECR		0xe81c
-@@ -92,6 +109,7 @@
+@@ -93,6 +110,7 @@
  #define PLA_SFF_STS_7		0xe8de
  #define PLA_PHYSTATUS		0xe908
  #define PLA_CONFIG6		0xe90a /* CONFIG6 */
@@ -102,7 +102,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define PLA_BP_BA		0xfc26
  #define PLA_BP_0		0xfc28
  #define PLA_BP_1		0xfc2a
-@@ -102,18 +120,43 @@
+@@ -103,18 +121,43 @@
  #define PLA_BP_6		0xfc34
  #define PLA_BP_7		0xfc36
  #define PLA_BP_EN		0xfc38
@@ -146,7 +146,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define USB_USB_CTRL		0xd406
  #define USB_PHY_CTRL		0xd408
  #define USB_TX_AGG		0xd40a
-@@ -125,29 +168,35 @@
+@@ -126,29 +169,35 @@
  #define USB_RX_EXTRA_AGGR_TMR	0xd432	/* RTL8153B */
  #define USB_TX_DMA		0xd434
  #define USB_UPT_RXDMA_OWN	0xd437
@@ -193,7 +193,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define USB_BP_9		0xfc3a
  #define USB_BP_10		0xfc3c
  #define USB_BP_11		0xfc3e
-@@ -166,6 +215,7 @@
+@@ -167,6 +216,7 @@
  #define OCP_EEE_AR		0xa41a
  #define OCP_EEE_DATA		0xa41c
  #define OCP_PHY_STATUS		0xa420
@@ -201,7 +201,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define OCP_NCTL_CFG		0xa42c
  #define OCP_POWER_CFG		0xa430
  #define OCP_EEE_CFG		0xa432
-@@ -175,9 +225,13 @@
+@@ -176,9 +226,13 @@
  #define OCP_EEE_ABLE		0xa5c4
  #define OCP_EEE_ADV		0xa5d0
  #define OCP_EEE_LPABLE		0xa5d2
@@ -215,7 +215,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define OCP_ADC_IOFFSET		0xbcfc
  #define OCP_ADC_CFG		0xbc06
  #define OCP_SYSCLK_CFG		0xc416
-@@ -185,9 +239,11 @@
+@@ -186,9 +240,11 @@
  /* SRAM Register */
  #define SRAM_GREEN_CFG		0x8011
  #define SRAM_LPF_CFG		0x8012
@@ -227,7 +227,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  /* PLA_RCR */
  #define RCR_AAP			0x00000001
-@@ -195,11 +251,19 @@
+@@ -196,11 +252,19 @@
  #define RCR_AM			0x00000004
  #define RCR_AB			0x00000008
  #define RCR_ACPT_ALL		(RCR_AAP | RCR_APM | RCR_AM | RCR_AB)
@@ -247,7 +247,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  /* PLA_RXFIFO_CTRL1 */
  #define RXFIFO_THR2_FULL	0x00000060
  #define RXFIFO_THR2_HIGH	0x00000038
-@@ -234,6 +298,9 @@
+@@ -235,6 +299,9 @@
  
  /* PLA_TCR1 */
  #define VERSION_MASK		0x7cf0
@@ -257,7 +257,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  /* PLA_MTPS */
  #define MTPS_JUMBO		(12 * 1024 / 64)
-@@ -267,6 +334,7 @@
+@@ -268,6 +335,7 @@
  #define MCU_BORW_EN		0x4000
  
  /* PLA_CPCR */
@@ -265,7 +265,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define CPCR_RX_VLAN		0x0040
  
  /* PLA_CFG_WOL */
-@@ -292,10 +360,15 @@
+@@ -293,10 +361,15 @@
  /* PLA_CONFIG6 */
  #define LANWAKE_CLR_EN		BIT(0)
  
@@ -281,7 +281,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define LAN_WAKE_EN		0x0002
  
  /* PLA_LED_FEATURE */
-@@ -315,6 +388,7 @@
+@@ -316,6 +389,7 @@
  /* PLA_MAC_PWR_CTRL2 */
  #define EEE_SPDWN_RATIO		0x8007
  #define MAC_CLK_SPDWN_EN	BIT(15)
@@ -289,7 +289,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  /* PLA_MAC_PWR_CTRL3 */
  #define PLA_MCU_SPDWN_EN	BIT(14)
-@@ -327,6 +401,7 @@
+@@ -328,6 +402,7 @@
  #define PWRSAVE_SPDWN_EN	0x1000
  #define RXDV_SPDWN_EN		0x0800
  #define TX10MIDLE_EN		0x0100
@@ -297,7 +297,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define TP100_SPDWN_EN		0x0020
  #define TP500_SPDWN_EN		0x0010
  #define TP1000_SPDWN_EN		0x0008
-@@ -357,8 +432,22 @@
+@@ -358,8 +433,22 @@
  /* PLA_INDICATE_FALG */
  #define UPCOMING_RUNTIME_D3	BIT(0)
  
@@ -320,7 +320,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  /* USB_USB2PHY */
  #define USB2PHY_SUSPEND		0x0001
-@@ -382,9 +471,18 @@
+@@ -383,9 +472,18 @@
  #define STAT_SPEED_HIGH		0x0000
  #define STAT_SPEED_FULL		0x0002
  
@@ -339,7 +339,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  /* USB_TX_AGG */
  #define TX_AGG_MAX_THRESHOLD	0x03
  
-@@ -402,22 +500,63 @@
+@@ -403,22 +501,63 @@
  #define BMU_RESET_EP_IN		0x01
  #define BMU_RESET_EP_OUT	0x02
  
@@ -403,7 +403,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  /* USB_POWER_CUT */
  #define PWR_EN			0x0001
-@@ -427,12 +566,21 @@
+@@ -428,12 +567,21 @@
  
  /* USB_MISC_0 */
  #define PCUT_STATUS		0x0001
@@ -425,7 +425,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  /* USB_WDT11_CTRL */
  #define TIMER11_EN		0x0001
  
-@@ -450,8 +598,12 @@
+@@ -451,8 +599,12 @@
  #define SEN_VAL_NORMAL		0xa000
  #define SEL_RXIDLE		0x0100
  
@@ -438,7 +438,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  /* USB_UPS_FLAGS */
  #define UPS_FLAGS_R_TUNE		BIT(0)
-@@ -459,6 +611,7 @@
+@@ -460,6 +612,7 @@
  #define UPS_FLAGS_250M_CKDIV		BIT(2)
  #define UPS_FLAGS_EN_ALDPS		BIT(3)
  #define UPS_FLAGS_CTAP_SHORT_DIS	BIT(4)
@@ -446,7 +446,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define ups_flags_speed(x)		((x) << 16)
  #define UPS_FLAGS_EN_EEE		BIT(20)
  #define UPS_FLAGS_EN_500M_EEE		BIT(21)
-@@ -479,6 +632,8 @@ enum spd_duplex {
+@@ -480,6 +633,8 @@ enum spd_duplex {
  	FORCE_10M_FULL,
  	FORCE_100M_HALF,
  	FORCE_100M_FULL,
@@ -455,7 +455,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  };
  
  /* OCP_ALDPS_CONFIG */
-@@ -493,6 +648,9 @@ enum spd_duplex {
+@@ -494,6 +649,9 @@ enum spd_duplex {
  #define PHY_STAT_LAN_ON		3
  #define PHY_STAT_PWRDN		5
  
@@ -465,7 +465,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  /* OCP_NCTL_CFG */
  #define PGA_RETURN_EN		BIT(1)
  
-@@ -543,6 +701,9 @@ enum spd_duplex {
+@@ -544,6 +702,9 @@ enum spd_duplex {
  #define EN_10M_CLKDIV		BIT(11)
  #define EN_10M_BGOFF		0x0080
  
@@ -475,7 +475,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  /* OCP_PHY_STATE */
  #define TXDIS_STATE		0x01
  #define ABD_STATE		0x02
-@@ -553,13 +714,17 @@ enum spd_duplex {
+@@ -554,13 +715,17 @@ enum spd_duplex {
  /* OCP_PHY_PATCH_CMD */
  #define PATCH_REQUEST		BIT(4)
  
@@ -494,7 +494,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  /* SRAM_GREEN_CFG */
  #define GREEN_ETH_EN		BIT(15)
-@@ -577,14 +742,15 @@ enum spd_duplex {
+@@ -578,14 +743,15 @@ enum spd_duplex {
  /* SRAM_IMPEDANCE */
  #define RX_DRIVING_MASK		0x6000
  
@@ -516,7 +516,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	_1000bps	= 0x10,
  	_100bps		= 0x08,
  	_10bps		= 0x04,
-@@ -592,6 +758,9 @@ enum rtl_register_content {
+@@ -593,6 +759,9 @@ enum rtl_register_content {
  	FULL_DUP	= 0x01,
  };
  
@@ -526,7 +526,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define RTL8152_MAX_TX		4
  #define RTL8152_MAX_RX		10
  #define INTBUFSIZE		2
-@@ -615,15 +784,14 @@ enum rtl_register_content {
+@@ -616,15 +785,14 @@ enum rtl_register_content {
  #define BYTE_EN_START_MASK	0x0f
  #define BYTE_EN_END_MASK	0xf0
  
@@ -547,7 +547,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  /* rtl8152 flags */
  enum rtl8152_flags {
-@@ -635,7 +803,8 @@ enum rtl8152_flags {
+@@ -636,7 +804,8 @@ enum rtl8152_flags {
  	PHY_RESET,
  	SCHEDULE_TASKLET,
  	GREEN_ETHERNET,
@@ -557,7 +557,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  };
  
  /* Define these values to match your device */
-@@ -650,6 +819,13 @@ enum rtl8152_flags {
+@@ -651,6 +820,13 @@ enum rtl8152_flags {
  #define MCU_TYPE_PLA			0x0100
  #define MCU_TYPE_USB			0x0000
  
@@ -571,7 +571,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  struct tally_counter {
  	__le64	tx_packets;
  	__le64	rx_packets;
-@@ -668,6 +844,7 @@ struct tally_counter {
+@@ -669,6 +845,7 @@ struct tally_counter {
  
  struct rx_desc {
  	__le32 opts1;
@@ -579,7 +579,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define RX_LEN_MASK			0x7fff
  
  	__le32 opts2;
-@@ -691,6 +868,7 @@ struct tx_desc {
+@@ -692,6 +869,7 @@ struct tx_desc {
  	__le32 opts1;
  #define TX_FS			BIT(31) /* First segment of a packet */
  #define TX_LS			BIT(30) /* Final segment of a packet */
@@ -587,7 +587,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define GTSENDV4		BIT(28)
  #define GTSENDV6		BIT(27)
  #define GTTCPHO_SHIFT		18
-@@ -723,6 +901,7 @@ struct tx_agg {
+@@ -724,6 +902,7 @@ struct tx_agg {
  	struct list_head list;
  	struct urb *urb;
  	struct r8152 *context;
@@ -595,7 +595,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	void *buffer;
  	void *head;
  	u32 skb_num;
-@@ -744,26 +923,39 @@ struct r8152 {
+@@ -745,26 +924,39 @@ struct r8152 {
  	struct delayed_work schedule, hw_phy_work;
  	struct mii_if_info mii;
  	struct mutex control;	/* use for hw setting */
@@ -646,7 +646,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		u32 _10m_ckdiv:1;
  		u32 _250m_ckdiv:1;
  		u32 aldps:1;
-@@ -792,12 +984,23 @@ struct r8152 {
+@@ -793,12 +985,23 @@ struct r8152 {
  	u32 rx_buf_sz;
  	u32 rx_copybreak;
  	u32 rx_pending;
@@ -670,7 +670,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	u8 duplex;
  	u8 autoneg;
  };
-@@ -813,6 +1016,15 @@ enum rtl_version {
+@@ -814,6 +1017,15 @@ enum rtl_version {
  	RTL_VER_07,
  	RTL_VER_08,
  	RTL_VER_09,
@@ -686,7 +686,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	RTL_VER_MAX
  };
  
-@@ -828,6 +1040,7 @@ enum tx_csum_stat {
+@@ -829,6 +1041,7 @@ enum tx_csum_stat {
  #define RTL_ADVERTISED_100_FULL			BIT(3)
  #define RTL_ADVERTISED_1000_HALF		BIT(4)
  #define RTL_ADVERTISED_1000_FULL		BIT(5)
@@ -694,7 +694,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  /* Maximum number of multicast addresses to filter (vs. Rx-all-multicast).
   * The RTL chips use a 64 element hash table based on the Ethernet CRC.
-@@ -835,8 +1048,7 @@ enum tx_csum_stat {
+@@ -836,8 +1049,7 @@ enum tx_csum_stat {
  static const int multicast_filter_limit = 32;
  static unsigned int agg_buf_sz = 16384;
  
@@ -704,7 +704,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  static
  int get_registers(struct r8152 *tp, u16 value, u16 index, u16 size, void *data)
-@@ -848,7 +1060,7 @@ int get_registers(struct r8152 *tp, u16 value, u16 index, u16 size, void *data)
+@@ -849,7 +1061,7 @@ int get_registers(struct r8152 *tp, u16 value, u16 index, u16 size, void *data)
  	if (!tmp)
  		return -ENOMEM;
  
@@ -713,7 +713,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  			      RTL8152_REQ_GET_REGS, RTL8152_REQT_READ,
  			      value, index, tmp, size, 500);
  	if (ret < 0)
-@@ -858,6 +1070,9 @@ int get_registers(struct r8152 *tp, u16 value, u16 index, u16 size, void *data)
+@@ -859,6 +1071,9 @@ int get_registers(struct r8152 *tp, u16 value, u16 index, u16 size, void *data)
  
  	kfree(tmp);
  
@@ -723,7 +723,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	return ret;
  }
  
-@@ -871,12 +1086,15 @@ int set_registers(struct r8152 *tp, u16 value, u16 index, u16 size, void *data)
+@@ -872,12 +1087,15 @@ int set_registers(struct r8152 *tp, u16 value, u16 index, u16 size, void *data)
  	if (!tmp)
  		return -ENOMEM;
  
@@ -740,7 +740,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	return ret;
  }
  
-@@ -952,16 +1170,24 @@ static int generic_ocp_write(struct r8152 *tp, u16 index, u16 byteen,
+@@ -953,16 +1171,24 @@ static int generic_ocp_write(struct r8152 *tp, u16 index, u16 byteen,
  	byteen_end = byteen & BYTE_EN_END_MASK;
  
  	byen = byteen_start | (byteen_start << 4);
@@ -772,7 +772,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  		while (size) {
  			if (size > limit) {
-@@ -988,10 +1214,9 @@ static int generic_ocp_write(struct r8152 *tp, u16 index, u16 byteen,
+@@ -989,10 +1215,9 @@ static int generic_ocp_write(struct r8152 *tp, u16 index, u16 byteen,
  			}
  		}
  
@@ -786,7 +786,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	}
  
  error1:
-@@ -1013,6 +1238,12 @@ int pla_ocp_write(struct r8152 *tp, u16 index, u16 byteen, u16 size, void *data)
+@@ -1014,6 +1239,12 @@ int pla_ocp_write(struct r8152 *tp, u16 index, u16 byteen, u16 size, void *data)
  	return generic_ocp_write(tp, index, byteen, size, data, MCU_TYPE_PLA);
  }
  
@@ -799,7 +799,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static inline
  int usb_ocp_write(struct r8152 *tp, u16 index, u16 byteen, u16 size, void *data)
  {
-@@ -1166,7 +1397,7 @@ static u16 sram_read(struct r8152 *tp, u16 addr)
+@@ -1167,7 +1398,7 @@ static u16 sram_read(struct r8152 *tp, u16 addr)
  static int read_mii_word(struct net_device *netdev, int phy_id, int reg)
  {
  	struct r8152 *tp = netdev_priv(netdev);
@@ -808,7 +808,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	if (test_bit(RTL8152_UNPLUG, &tp->flags))
  		return -ENODEV;
-@@ -1174,8 +1405,15 @@ static int read_mii_word(struct net_device *netdev, int phy_id, int reg)
+@@ -1175,8 +1406,15 @@ static int read_mii_word(struct net_device *netdev, int phy_id, int reg)
  	if (phy_id != R8152_PHY_ID)
  		return -EINVAL;
  
@@ -824,7 +824,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	return ret;
  }
  
-@@ -1183,6 +1421,7 @@ static
+@@ -1184,6 +1422,7 @@ static
  void write_mii_word(struct net_device *netdev, int phy_id, int reg, int val)
  {
  	struct r8152 *tp = netdev_priv(netdev);
@@ -832,7 +832,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	if (test_bit(RTL8152_UNPLUG, &tp->flags))
  		return;
-@@ -1190,28 +1429,45 @@ void write_mii_word(struct net_device *netdev, int phy_id, int reg, int val)
+@@ -1191,28 +1430,45 @@ void write_mii_word(struct net_device *netdev, int phy_id, int reg, int val)
  	if (phy_id != R8152_PHY_ID)
  		return;
  
@@ -883,7 +883,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	ocp_write_byte(tp, MCU_TYPE_PLA, PLA_CRWECR, CRWECR_CONFIG);
  	pla_ocp_write(tp, PLA_IDR, BYTE_EN_SIX_BYTES, 8, addr->sa_data);
-@@ -1219,62 +1475,47 @@ static int rtl8152_set_mac_address(struct net_device *netdev, void *p)
+@@ -1220,62 +1476,47 @@ static int rtl8152_set_mac_address(struct net_device *netdev, void *p)
  
  	mutex_unlock(&tp->control);
  
@@ -963,7 +963,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	if (!(ret == 0 && is_valid_ether_addr(buf))) {
  		netif_warn(tp, probe, tp->netdev,
  			   "Invalid MAC for pass-thru MAC addr: %d, %pM\n",
-@@ -1282,7 +1523,8 @@ static int vendor_mac_passthru_addr_read(struct r8152 *tp, struct sockaddr *sa)
+@@ -1283,7 +1524,8 @@ static int vendor_mac_passthru_addr_read(struct r8152 *tp, struct sockaddr *sa)
  		ret = -EINVAL;
  		goto amacout;
  	}
@@ -973,7 +973,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	netif_info(tp, probe, tp->netdev,
  		   "Using pass-thru MAC addr %pM\n", sa->sa_data);
  
-@@ -1291,6 +1533,59 @@ amacout:
+@@ -1292,6 +1534,59 @@ amacout:
  	return ret;
  }
  
@@ -1033,7 +1033,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static int determine_ethernet_addr(struct r8152 *tp, struct sockaddr *sa)
  {
  	struct net_device *dev = tp->netdev;
-@@ -1298,15 +1593,18 @@ static int determine_ethernet_addr(struct r8152 *tp, struct sockaddr *sa)
+@@ -1299,15 +1594,18 @@ static int determine_ethernet_addr(struct r8152 *tp, struct sockaddr *sa)
  
  	sa->sa_family = dev->type;
  
@@ -1061,7 +1061,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	}
  
  	if (ret < 0) {
-@@ -1324,7 +1622,7 @@ static int determine_ethernet_addr(struct r8152 *tp, struct sockaddr *sa)
+@@ -1325,7 +1623,7 @@ static int determine_ethernet_addr(struct r8152 *tp, struct sockaddr *sa)
  	return ret;
  }
  
@@ -1070,7 +1070,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  {
  	struct net_device *dev = tp->netdev;
  	struct sockaddr sa;
-@@ -1335,13 +1633,24 @@ static int set_ethernet_addr(struct r8152 *tp)
+@@ -1336,13 +1634,24 @@ static int set_ethernet_addr(struct r8152 *tp)
  		return ret;
  
  	if (tp->version == RTL_VER_01)
@@ -1097,7 +1097,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static void read_bulk_callback(struct urb *urb)
  {
  	struct net_device *netdev;
-@@ -1387,15 +1696,25 @@ static void read_bulk_callback(struct urb *urb)
+@@ -1388,15 +1697,25 @@ static void read_bulk_callback(struct urb *urb)
  		rtl_set_unplug(tp);
  		netif_device_detach(tp->netdev);
  		return;
@@ -1125,7 +1125,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		break;
  	}
  
-@@ -1420,10 +1739,11 @@ static void write_bulk_callback(struct urb *urb)
+@@ -1421,10 +1740,11 @@ static void write_bulk_callback(struct urb *urb)
  		return;
  
  	netdev = tp->netdev;
@@ -1139,7 +1139,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		stats->tx_errors += agg->skb_num;
  	} else {
  		stats->tx_packets += agg->skb_num;
-@@ -1449,6 +1769,59 @@ static void write_bulk_callback(struct urb *urb)
+@@ -1450,6 +1770,59 @@ static void write_bulk_callback(struct urb *urb)
  		tasklet_schedule(&tp->tx_tl);
  }
  
@@ -1199,7 +1199,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static void intr_callback(struct urb *urb)
  {
  	struct r8152 *tp;
-@@ -1472,7 +1845,7 @@ static void intr_callback(struct urb *urb)
+@@ -1473,7 +1846,7 @@ static void intr_callback(struct urb *urb)
  	case -ECONNRESET:	/* unlink */
  	case -ESHUTDOWN:
  		netif_device_detach(tp->netdev);
@@ -1208,7 +1208,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	case -ENOENT:
  	case -EPROTO:
  		netif_info(tp, intr, tp->netdev,
-@@ -1547,7 +1920,7 @@ static struct rx_agg *alloc_rx_agg(struct r8152 *tp, gfp_t mflags)
+@@ -1548,7 +1921,7 @@ static struct rx_agg *alloc_rx_agg(struct r8152 *tp, gfp_t mflags)
  	if (!rx_agg)
  		return NULL;
  
@@ -1217,7 +1217,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	if (!rx_agg->page)
  		goto free_rx;
  
-@@ -1660,6 +2033,7 @@ static int alloc_all_mem(struct r8152 *tp)
+@@ -1661,6 +2034,7 @@ static int alloc_all_mem(struct r8152 *tp)
  		tp->tx_info[i].head = tx_agg_align(buf);
  
  		list_add_tail(&tp->tx_info[i].list, &tp->tx_free);
@@ -1225,7 +1225,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	}
  
  	tp->intr_urb = usb_alloc_urb(0, GFP_KERNEL);
-@@ -1671,7 +2045,7 @@ static int alloc_all_mem(struct r8152 *tp)
+@@ -1672,7 +2046,7 @@ static int alloc_all_mem(struct r8152 *tp)
  		goto err1;
  
  	tp->intr_interval = (int)ep_intr->desc.bInterval;
@@ -1234,7 +1234,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  			 tp->intr_buff, INTBUFSIZE, intr_callback,
  			 tp, tp->intr_interval);
  
-@@ -1704,7 +2078,7 @@ static struct tx_agg *r8152_get_tx_agg(struct r8152 *tp)
+@@ -1705,7 +2079,7 @@ static struct tx_agg *r8152_get_tx_agg(struct r8152 *tp)
  }
  
  /* r8152_csum_workaround()
@@ -1243,7 +1243,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
   * range, calculate the checksum by sw.
   */
  static void r8152_csum_workaround(struct r8152 *tp, struct sk_buff *skb,
-@@ -1712,8 +2086,8 @@ static void r8152_csum_workaround(struct r8152 *tp, struct sk_buff *skb,
+@@ -1713,8 +2087,8 @@ static void r8152_csum_workaround(struct r8152 *tp, struct sk_buff *skb,
  {
  	if (skb_shinfo(skb)->gso_size) {
  		netdev_features_t features = tp->netdev->features;
@@ -1253,7 +1253,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  		features &= ~(NETIF_F_SG | NETIF_F_IPV6_CSUM | NETIF_F_TSO6);
  		segs = skb_gso_segment(skb, features);
-@@ -1722,12 +2096,10 @@ static void r8152_csum_workaround(struct r8152 *tp, struct sk_buff *skb,
+@@ -1723,12 +2097,10 @@ static void r8152_csum_workaround(struct r8152 *tp, struct sk_buff *skb,
  
  		__skb_queue_head_init(&seg_list);
  
@@ -1270,7 +1270,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  		skb_queue_splice(&seg_list, list);
  		dev_kfree_skb(skb);
-@@ -1740,56 +2112,80 @@ static void r8152_csum_workaround(struct r8152 *tp, struct sk_buff *skb,
+@@ -1741,56 +2113,80 @@ static void r8152_csum_workaround(struct r8152 *tp, struct sk_buff *skb,
  		struct net_device_stats *stats;
  
  drop:
@@ -1375,7 +1375,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  {
  	u32 mss = skb_shinfo(skb)->gso_size;
  	u32 opts1, opts2 = 0;
-@@ -1800,6 +2196,8 @@ static int r8152_tx_csum(struct r8152 *tp, struct tx_desc *desc,
+@@ -1801,6 +2197,8 @@ static int r8152_tx_csum(struct r8152 *tp, struct tx_desc *desc,
  	opts1 = len | TX_FS | TX_LS;
  
  	if (mss) {
@@ -1384,7 +1384,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		if (transport_offset > GTTCPHO_MAX) {
  			netif_warn(tp, tx_err, tp->netdev,
  				   "Invalid transport offset 0x%x for TSO\n",
-@@ -1814,10 +2212,11 @@ static int r8152_tx_csum(struct r8152 *tp, struct tx_desc *desc,
+@@ -1815,10 +2213,11 @@ static int r8152_tx_csum(struct r8152 *tp, struct tx_desc *desc,
  			break;
  
  		case htons(ETH_P_IPV6):
@@ -1397,7 +1397,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  			opts1 |= GTSENDV6;
  			break;
  
-@@ -1829,6 +2228,7 @@ static int r8152_tx_csum(struct r8152 *tp, struct tx_desc *desc,
+@@ -1830,6 +2229,7 @@ static int r8152_tx_csum(struct r8152 *tp, struct tx_desc *desc,
  		opts1 |= transport_offset << GTTCPHO_SHIFT;
  		opts2 |= min(mss, MSS_MAX) << MSS_SHIFT;
  	} else if (skb->ip_summed == CHECKSUM_PARTIAL) {
@@ -1405,7 +1405,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		u8 ip_protocol;
  
  		if (transport_offset > TCPHO_MAX) {
-@@ -1892,7 +2292,6 @@ static int r8152_tx_agg_fill(struct r8152 *tp, struct tx_agg *agg)
+@@ -1893,7 +2293,6 @@ static int r8152_tx_agg_fill(struct r8152 *tp, struct tx_agg *agg)
  		struct tx_desc *tx_desc;
  		struct sk_buff *skb;
  		unsigned int len;
@@ -1413,7 +1413,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  		skb = __skb_dequeue(&skb_head);
  		if (!skb)
-@@ -1908,9 +2307,7 @@ static int r8152_tx_agg_fill(struct r8152 *tp, struct tx_agg *agg)
+@@ -1909,9 +2308,7 @@ static int r8152_tx_agg_fill(struct r8152 *tp, struct tx_agg *agg)
  		tx_data = tx_agg_align(tx_data);
  		tx_desc = (struct tx_desc *)tx_data;
  
@@ -1424,7 +1424,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  			r8152_csum_workaround(tp, skb, &skb_head);
  			continue;
  		}
-@@ -1933,12 +2330,9 @@ static int r8152_tx_agg_fill(struct r8152 *tp, struct tx_agg *agg)
+@@ -1934,12 +2331,9 @@ static int r8152_tx_agg_fill(struct r8152 *tp, struct tx_agg *agg)
  		agg->skb_len += len;
  		agg->skb_num += skb_shinfo(skb)->gso_segs ?: 1;
  
@@ -1438,7 +1438,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	}
  
  	if (!skb_queue_empty(&skb_head)) {
-@@ -1959,10 +2353,13 @@ static int r8152_tx_agg_fill(struct r8152 *tp, struct tx_agg *agg)
+@@ -1960,10 +2354,13 @@ static int r8152_tx_agg_fill(struct r8152 *tp, struct tx_agg *agg)
  	if (ret < 0)
  		goto out_tx_fill;
  
@@ -1453,7 +1453,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	ret = usb_submit_urb(agg->urb, GFP_ATOMIC);
  	if (ret < 0)
  		usb_autopm_put_interface_async(tp->intf);
-@@ -1971,15 +2368,156 @@ out_tx_fill:
+@@ -1972,15 +2369,156 @@ out_tx_fill:
  	return ret;
  }
  
@@ -1616,7 +1616,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	opts3 = le32_to_cpu(rx_desc->opts3);
  
  	if (opts2 & RD_IPV4_CS) {
-@@ -2024,7 +2562,9 @@ static struct rx_agg *rtl_get_free_rx(struct r8152 *tp, gfp_t mflags)
+@@ -2025,7 +2563,9 @@ static struct rx_agg *rtl_get_free_rx(struct r8152 *tp, gfp_t mflags)
  				agg_free = agg;
  				continue;
  			}
@@ -1627,7 +1627,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  				list_del_init(&agg->list);
  				free_rx_agg(tp, agg);
  			}
-@@ -2034,8 +2574,10 @@ static struct rx_agg *rtl_get_free_rx(struct r8152 *tp, gfp_t mflags)
+@@ -2035,8 +2575,10 @@ static struct rx_agg *rtl_get_free_rx(struct r8152 *tp, gfp_t mflags)
  
  	spin_unlock_irqrestore(&tp->rx_lock, flags);
  
@@ -1639,7 +1639,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	return agg_free;
  }
-@@ -2051,15 +2593,34 @@ static int rx_bottom(struct r8152 *tp, int budget)
+@@ -2052,15 +2594,34 @@ static int rx_bottom(struct r8152 *tp, int budget)
  		while (work_done < budget) {
  			struct sk_buff *skb = __skb_dequeue(&tp->rx_queue);
  			struct net_device *netdev = tp->netdev;
@@ -1675,7 +1675,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  			stats->rx_packets++;
  			stats->rx_bytes += pkt_len;
  		}
-@@ -2068,6 +2629,7 @@ static int rx_bottom(struct r8152 *tp, int budget)
+@@ -2069,6 +2630,7 @@ static int rx_bottom(struct r8152 *tp, int budget)
  	if (list_empty(&tp->rx_done))
  		goto out1;
  
@@ -1683,7 +1683,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	INIT_LIST_HEAD(&rx_queue);
  	spin_lock_irqsave(&tp->rx_lock, flags);
  	list_splice_init(&tp->rx_done, &rx_queue);
-@@ -2084,7 +2646,7 @@ static int rx_bottom(struct r8152 *tp, int budget)
+@@ -2085,7 +2647,7 @@ static int rx_bottom(struct r8152 *tp, int budget)
  
  		agg = list_entry(cursor, struct rx_agg, list);
  		urb = agg->urb;
@@ -1692,7 +1692,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  			goto submit;
  
  		agg_free = rtl_get_free_rx(tp, GFP_ATOMIC);
-@@ -2095,11 +2657,11 @@ static int rx_bottom(struct r8152 *tp, int budget)
+@@ -2096,11 +2658,11 @@ static int rx_bottom(struct r8152 *tp, int budget)
  
  		while (urb->actual_length > len_used) {
  			struct net_device *netdev = tp->netdev;
@@ -1706,7 +1706,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  			if (unlikely(skb_queue_len(&tp->rx_queue) >= 1000))
  				break;
  
-@@ -2111,6 +2673,8 @@ static int rx_bottom(struct r8152 *tp, int budget)
+@@ -2112,6 +2674,8 @@ static int rx_bottom(struct r8152 *tp, int budget)
  			if (urb->actual_length < len_used)
  				break;
  
@@ -1715,7 +1715,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  			pkt_len -= ETH_FCS_LEN;
  			rx_data += sizeof(struct rx_desc);
  
-@@ -2138,7 +2702,26 @@ static int rx_bottom(struct r8152 *tp, int budget)
+@@ -2139,7 +2703,26 @@ static int rx_bottom(struct r8152 *tp, int budget)
  				get_page(agg->page);
  			}
  
@@ -1742,7 +1742,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  			rtl_rx_vlan_tag(rx_desc, skb);
  			if (work_done < budget) {
  				work_done++;
-@@ -2148,6 +2731,7 @@ static int rx_bottom(struct r8152 *tp, int budget)
+@@ -2149,6 +2732,7 @@ static int rx_bottom(struct r8152 *tp, int budget)
  			} else {
  				__skb_queue_tail(&tp->rx_queue, skb);
  			}
@@ -1750,7 +1750,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  find_next_rx:
  			rx_data = rx_agg_align(rx_data + pkt_len + ETH_FCS_LEN);
-@@ -2194,6 +2778,7 @@ static void tx_bottom(struct r8152 *tp)
+@@ -2195,6 +2779,7 @@ static void tx_bottom(struct r8152 *tp)
  	int res;
  
  	do {
@@ -1758,7 +1758,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		struct tx_agg *agg;
  
  		if (skb_queue_empty(&tp->tx_queue))
-@@ -2203,34 +2788,39 @@ static void tx_bottom(struct r8152 *tp)
+@@ -2204,34 +2789,39 @@ static void tx_bottom(struct r8152 *tp)
  		if (!agg)
  			break;
  
@@ -1818,7 +1818,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	if (test_bit(RTL8152_UNPLUG, &tp->flags))
  		return;
-@@ -2248,24 +2838,57 @@ static void bottom_half(unsigned long data)
+@@ -2249,24 +2839,57 @@ static void bottom_half(unsigned long data)
  	tx_bottom(tp);
  }
  
@@ -1878,7 +1878,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static
  int r8152_submit_rx(struct r8152 *tp, struct rx_agg *agg, gfp_t mem_flags)
  {
-@@ -2276,7 +2899,7 @@ int r8152_submit_rx(struct r8152 *tp, struct rx_agg *agg, gfp_t mem_flags)
+@@ -2277,7 +2900,7 @@ int r8152_submit_rx(struct r8152 *tp, struct rx_agg *agg, gfp_t mem_flags)
  	    !test_bit(WORK_ENABLE, &tp->flags) || !netif_carrier_ok(tp->netdev))
  		return 0;
  
@@ -1887,7 +1887,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  			  agg->buffer, tp->rx_buf_sz,
  			  (usb_complete_t)read_bulk_callback, agg);
  
-@@ -2304,7 +2927,7 @@ int r8152_submit_rx(struct r8152 *tp, struct rx_agg *agg, gfp_t mem_flags)
+@@ -2305,7 +2928,7 @@ int r8152_submit_rx(struct r8152 *tp, struct rx_agg *agg, gfp_t mem_flags)
  
  static void rtl_drop_queued_tx(struct r8152 *tp)
  {
@@ -1896,7 +1896,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	struct sk_buff_head skb_head, *tx_queue = &tp->tx_queue;
  	struct sk_buff *skb;
  
-@@ -2322,32 +2945,47 @@ static void rtl_drop_queued_tx(struct r8152 *tp)
+@@ -2323,32 +2946,47 @@ static void rtl_drop_queued_tx(struct r8152 *tp)
  	}
  }
  
@@ -1954,7 +1954,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	netif_stop_queue(netdev);
  	ocp_data = ocp_read_dword(tp, MCU_TYPE_PLA, PLA_RCR);
  	ocp_data &= ~RCR_ACPT_ALL;
-@@ -2359,23 +2997,43 @@ static void _rtl8152_set_rx_mode(struct net_device *netdev)
+@@ -2360,23 +2998,43 @@ static void _rtl8152_set_rx_mode(struct net_device *netdev)
  		ocp_data |= RCR_AM | RCR_AAP;
  		mc_filter[1] = 0xffffffff;
  		mc_filter[0] = 0xffffffff;
@@ -2005,7 +2005,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	}
  
  	tmp[0] = __cpu_to_le32(swab32(mc_filter[1]));
-@@ -2386,27 +3044,69 @@ static void _rtl8152_set_rx_mode(struct net_device *netdev)
+@@ -2387,27 +3045,69 @@ static void _rtl8152_set_rx_mode(struct net_device *netdev)
  	netif_wake_queue(netdev);
  }
  
@@ -2078,7 +2078,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	skb_tx_timestamp(skb);
  
  	skb_queue_tail(&tp->tx_queue, skb);
-@@ -2428,7 +3128,7 @@ static netdev_tx_t rtl8152_start_xmit(struct sk_buff *skb,
+@@ -2429,7 +3129,7 @@ static netdev_tx_t rtl8152_start_xmit(struct sk_buff *skb,
  
  static void r8152b_reset_packet_filter(struct r8152 *tp)
  {
@@ -2087,7 +2087,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_FMC);
  	ocp_data &= ~FMC_FCR_MCU_EN;
-@@ -2439,45 +3139,81 @@ static void r8152b_reset_packet_filter(struct r8152 *tp)
+@@ -2440,45 +3140,81 @@ static void r8152b_reset_packet_filter(struct r8152 *tp)
  
  static void rtl8152_nic_reset(struct r8152 *tp)
  {
@@ -2191,7 +2191,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  }
  
  static void rxdy_gated_en(struct r8152 *tp, bool enable)
-@@ -2575,6 +3311,29 @@ static int rtl_stop_rx(struct r8152 *tp)
+@@ -2576,6 +3312,29 @@ static int rtl_stop_rx(struct r8152 *tp)
  	return 0;
  }
  
@@ -2221,7 +2221,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static inline void r8153b_rx_agg_chg_indicate(struct r8152 *tp)
  {
  	ocp_write_byte(tp, MCU_TYPE_USB, USB_UPT_RXDMA_OWN,
-@@ -2592,11 +3351,16 @@ static int rtl_enable(struct r8152 *tp)
+@@ -2593,11 +3352,16 @@ static int rtl_enable(struct r8152 *tp)
  	ocp_write_byte(tp, MCU_TYPE_PLA, PLA_CR, ocp_data);
  
  	switch (tp->version) {
@@ -2241,7 +2241,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		break;
  	}
  
-@@ -2631,11 +3395,23 @@ static void r8153_set_rx_early_timeout(struct r8152 *tp)
+@@ -2632,11 +3396,23 @@ static void r8153_set_rx_early_timeout(struct r8152 *tp)
  
  	case RTL_VER_08:
  	case RTL_VER_09:
@@ -2267,7 +2267,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		ocp_write_word(tp, MCU_TYPE_USB, USB_RX_EXTRA_AGGR_TMR,
  			       ocp_data);
  		break;
-@@ -2659,6 +3435,16 @@ static void r8153_set_rx_early_size(struct r8152 *tp)
+@@ -2660,6 +3436,16 @@ static void r8153_set_rx_early_size(struct r8152 *tp)
  		break;
  	case RTL_VER_08:
  	case RTL_VER_09:
@@ -2284,7 +2284,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		ocp_write_word(tp, MCU_TYPE_USB, USB_RX_EARLY_SIZE,
  			       ocp_data / 8);
  		break;
-@@ -2670,6 +3456,8 @@ static void r8153_set_rx_early_size(struct r8152 *tp)
+@@ -2671,6 +3457,8 @@ static void r8153_set_rx_early_size(struct r8152 *tp)
  
  static int rtl8153_enable(struct r8152 *tp)
  {
@@ -2293,7 +2293,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	if (test_bit(RTL8152_UNPLUG, &tp->flags))
  		return -ENODEV;
  
-@@ -2678,12 +3466,27 @@ static int rtl8153_enable(struct r8152 *tp)
+@@ -2679,12 +3467,27 @@ static int rtl8153_enable(struct r8152 *tp)
  	r8153_set_rx_early_timeout(tp);
  	r8153_set_rx_early_size(tp);
  
@@ -2326,7 +2326,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	int i;
  
  	if (test_bit(RTL8152_UNPLUG, &tp->flags)) {
-@@ -2740,14 +3543,79 @@ static void rtl_rx_vlan_en(struct r8152 *tp, bool enable)
+@@ -2741,14 +3544,79 @@ static void rtl_rx_vlan_en(struct r8152 *tp, bool enable)
  {
  	u32 ocp_data;
  
@@ -2411,7 +2411,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static int rtl8152_set_features(struct net_device *dev,
  				netdev_features_t features)
  {
-@@ -2755,6 +3623,9 @@ static int rtl8152_set_features(struct net_device *dev,
+@@ -2756,6 +3624,9 @@ static int rtl8152_set_features(struct net_device *dev,
  	struct r8152 *tp = netdev_priv(dev);
  	int ret;
  
@@ -2421,7 +2421,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	ret = usb_autopm_get_interface(tp->intf);
  	if (ret < 0)
  		goto out;
-@@ -2776,6 +3647,8 @@ out:
+@@ -2777,6 +3648,8 @@ out:
  	return ret;
  }
  
@@ -2430,7 +2430,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  #define WAKE_ANY (WAKE_PHY | WAKE_MAGIC | WAKE_UCAST | WAKE_BCAST | WAKE_MCAST)
  
  static u32 __rtl_get_wol(struct r8152 *tp)
-@@ -2838,6 +3711,40 @@ static void __rtl_set_wol(struct r8152 *tp, u32 wolopts)
+@@ -2839,6 +3712,40 @@ static void __rtl_set_wol(struct r8152 *tp, u32 wolopts)
  		device_set_wakeup_enable(&tp->udev->dev, false);
  }
  
@@ -2471,7 +2471,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static void r8153_u1u2en(struct r8152 *tp, bool enable)
  {
  	u8 u1u2[8];
-@@ -2875,6 +3782,15 @@ static void r8153_u2p3en(struct r8152 *tp, bool enable)
+@@ -2876,6 +3783,15 @@ static void r8153_u2p3en(struct r8152 *tp, bool enable)
  	ocp_write_word(tp, MCU_TYPE_USB, USB_U2P3_CTRL, ocp_data);
  }
  
@@ -2487,7 +2487,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static void r8153b_ups_flags(struct r8152 *tp)
  {
  	u32 ups_flags = 0;
-@@ -2897,6 +3813,9 @@ static void r8153b_ups_flags(struct r8152 *tp)
+@@ -2898,6 +3814,9 @@ static void r8153b_ups_flags(struct r8152 *tp)
  	if (tp->ups_info.eee_cmod_lv)
  		ups_flags |= UPS_FLAGS_EEE_CMOD_LV_EN;
  
@@ -2497,7 +2497,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	if (tp->ups_info._10m_ckdiv)
  		ups_flags |= UPS_FLAGS_EN_10M_CKDIV;
  
-@@ -2947,10 +3866,104 @@ static void r8153b_ups_flags(struct r8152 *tp)
+@@ -2948,10 +3867,104 @@ static void r8153b_ups_flags(struct r8152 *tp)
  	ocp_write_dword(tp, MCU_TYPE_USB, USB_UPS_FLAGS, ups_flags);
  }
  
@@ -2603,7 +2603,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	if (enable) {
  		sram_write(tp, 0x8045, 0);	/* 10M abiq&ldvbias */
  		sram_write(tp, 0x804d, 0x1222);	/* 100M short abiq&ldvbias */
-@@ -2961,11 +3974,7 @@ static void r8153b_green_en(struct r8152 *tp, bool enable)
+@@ -2962,11 +3975,7 @@ static void r8153b_green_en(struct r8152 *tp, bool enable)
  		sram_write(tp, 0x805d, 0x2444);	/* 1000M short abiq&ldvbias */
  	}
  
@@ -2616,7 +2616,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  }
  
  static u16 r8153_phy_status(struct r8152 *tp, u16 desired)
-@@ -3002,45 +4011,150 @@ static void r8153b_ups_en(struct r8152 *tp, bool enable)
+@@ -3003,45 +4012,150 @@ static void r8153b_ups_en(struct r8152 *tp, bool enable)
  		ocp_data |= UPS_EN | USP_PREWAKE | PHASE2_EN;
  		ocp_write_byte(tp, MCU_TYPE_USB, USB_POWER_CUT, ocp_data);
  
@@ -2792,7 +2792,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	}
  }
  
-@@ -3135,10 +4249,14 @@ static void rtl_runtime_suspend_enable(struct r8152 *tp, bool enable)
+@@ -3136,10 +4250,14 @@ static void rtl_runtime_suspend_enable(struct r8152 *tp, bool enable)
  static void rtl8153_runtime_enable(struct r8152 *tp, bool enable)
  {
  	if (enable) {
@@ -2807,7 +2807,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		rtl_runtime_suspend_enable(tp, false);
  
  		switch (tp->version) {
-@@ -3168,38 +4286,99 @@ static void rtl8153b_runtime_enable(struct r8152 *tp, bool enable)
+@@ -3169,38 +4287,99 @@ static void rtl8153b_runtime_enable(struct r8152 *tp, bool enable)
  		r8153b_ups_en(tp, false);
  		r8153_queue_wake(tp, false);
  		rtl_runtime_suspend_enable(tp, false);
@@ -2923,7 +2923,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	}
  
  	ocp_write_word(tp, MCU_TYPE_PLA, PLA_WDT6_CTRL, WDT6_SET_MODE);
-@@ -3218,6 +4397,882 @@ static void rtl_reset_bmu(struct r8152 *tp)
+@@ -3219,6 +4398,882 @@ static void rtl_reset_bmu(struct r8152 *tp)
  	ocp_write_byte(tp, MCU_TYPE_USB, USB_BMU_RESET, ocp_data);
  }
  
@@ -3806,7 +3806,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static void r8152_aldps_en(struct r8152 *tp, bool enable)
  {
  	if (enable) {
-@@ -3237,6 +5292,7 @@ static inline void r8152_mmd_indirect(struct r8152 *tp, u16 dev, u16 reg)
+@@ -3238,6 +5293,7 @@ static inline void r8152_mmd_indirect(struct r8152 *tp, u16 dev, u16 reg)
  	ocp_reg_write(tp, OCP_EEE_AR, FUN_DATA | dev);
  }
  
@@ -3814,7 +3814,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static u16 r8152_mmd_read(struct r8152 *tp, u16 dev, u16 reg)
  {
  	u16 data;
-@@ -3247,6 +5303,7 @@ static u16 r8152_mmd_read(struct r8152 *tp, u16 dev, u16 reg)
+@@ -3248,6 +5304,7 @@ static u16 r8152_mmd_read(struct r8152 *tp, u16 dev, u16 reg)
  
  	return data;
  }
@@ -3822,7 +3822,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  static void r8152_mmd_write(struct r8152 *tp, u16 dev, u16 reg, u16 data)
  {
-@@ -3308,6 +5365,22 @@ static void r8153_eee_en(struct r8152 *tp, bool enable)
+@@ -3309,6 +5366,22 @@ static void r8153_eee_en(struct r8152 *tp, bool enable)
  	tp->ups_info.eee = enable;
  }
  
@@ -3845,7 +3845,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static void rtl_eee_enable(struct r8152 *tp, bool enable)
  {
  	switch (tp->version) {
-@@ -3329,6 +5402,7 @@ static void rtl_eee_enable(struct r8152 *tp, bool enable)
+@@ -3330,6 +5403,7 @@ static void rtl_eee_enable(struct r8152 *tp, bool enable)
  	case RTL_VER_06:
  	case RTL_VER_08:
  	case RTL_VER_09:
@@ -3853,7 +3853,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		if (enable) {
  			r8153_eee_en(tp, true);
  			ocp_reg_write(tp, OCP_EEE_ADV, tp->eee_adv);
-@@ -3337,6 +5411,19 @@ static void rtl_eee_enable(struct r8152 *tp, bool enable)
+@@ -3338,6 +5412,19 @@ static void rtl_eee_enable(struct r8152 *tp, bool enable)
  			ocp_reg_write(tp, OCP_EEE_ADV, 0);
  		}
  		break;
@@ -3873,7 +3873,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	default:
  		break;
  	}
-@@ -3362,6 +5449,8 @@ static void rtl8152_disable(struct r8152 *tp)
+@@ -3363,6 +5450,8 @@ static void rtl8152_disable(struct r8152 *tp)
  
  static void r8152b_hw_phy_cfg(struct r8152 *tp)
  {
@@ -3882,7 +3882,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	rtl_eee_enable(tp, tp->eee_en);
  	r8152_aldps_en(tp, true);
  	r8152b_enable_fc(tp);
-@@ -3369,11 +5458,37 @@ static void r8152b_hw_phy_cfg(struct r8152 *tp)
+@@ -3370,11 +5459,37 @@ static void r8152b_hw_phy_cfg(struct r8152 *tp)
  	set_bit(PHY_RESET, &tp->flags);
  }
  
@@ -3921,7 +3921,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	ocp_data = ocp_read_dword(tp, MCU_TYPE_PLA, PLA_RCR);
  	ocp_data &= ~RCR_ACPT_ALL;
  	ocp_write_dword(tp, MCU_TYPE_PLA, PLA_RCR, ocp_data);
-@@ -3391,23 +5506,13 @@ static void r8152b_exit_oob(struct r8152 *tp)
+@@ -3392,23 +5507,13 @@ static void r8152b_exit_oob(struct r8152 *tp)
  	ocp_data &= ~MCU_BORW_EN;
  	ocp_write_word(tp, MCU_TYPE_PLA, PLA_SFF_STS_7, ocp_data);
  
@@ -3947,7 +3947,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	rtl8152_nic_reset(tp);
  
-@@ -3430,7 +5535,7 @@ static void r8152b_exit_oob(struct r8152 *tp)
+@@ -3431,7 +5536,7 @@ static void r8152b_exit_oob(struct r8152 *tp)
  	}
  
  	/* TX share fifo free credit full threshold */
@@ -3956,7 +3956,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	ocp_write_byte(tp, MCU_TYPE_USB, USB_TX_AGG, TX_AGG_MAX_THRESHOLD);
  	ocp_write_dword(tp, MCU_TYPE_USB, USB_RX_BUF_TH, RX_THR_HIGH);
-@@ -3449,7 +5554,6 @@ static void r8152b_exit_oob(struct r8152 *tp)
+@@ -3450,7 +5555,6 @@ static void r8152b_exit_oob(struct r8152 *tp)
  static void r8152b_enter_oob(struct r8152 *tp)
  {
  	u32 ocp_data;
@@ -3964,7 +3964,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	ocp_data = ocp_read_byte(tp, MCU_TYPE_PLA, PLA_OOB_CTRL);
  	ocp_data &= ~NOW_IS_OOB;
-@@ -3461,23 +5565,13 @@ static void r8152b_enter_oob(struct r8152 *tp)
+@@ -3462,23 +5566,13 @@ static void r8152b_enter_oob(struct r8152 *tp)
  
  	rtl_disable(tp);
  
@@ -3990,7 +3990,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RMS, RTL8152_RMS);
  
-@@ -3498,71 +5592,3353 @@ static void r8152b_enter_oob(struct r8152 *tp)
+@@ -3499,71 +5593,3353 @@ static void r8152b_enter_oob(struct r8152 *tp)
  	ocp_write_dword(tp, MCU_TYPE_PLA, PLA_RCR, ocp_data);
  }
  
@@ -7385,7 +7385,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	}
  
  	data = ocp_reg_read(tp, OCP_POWER_CFG);
-@@ -3625,12 +9001,38 @@ static void r8153b_hw_phy_cfg(struct r8152 *tp)
+@@ -3626,12 +9002,38 @@ static void r8153b_hw_phy_cfg(struct r8152 *tp)
  	u32 ocp_data;
  	u16 data;
  
@@ -7424,7 +7424,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	r8153b_green_en(tp, test_bit(GREEN_ETHERNET, &tp->flags));
  
  	data = sram_read(tp, SRAM_GREEN_CFG);
-@@ -3669,8 +9071,15 @@ static void r8153b_hw_phy_cfg(struct r8152 *tp)
+@@ -3670,8 +9072,15 @@ static void r8153b_hw_phy_cfg(struct r8152 *tp)
  	ocp_data |= PFM_PWM_SWITCH;
  	ocp_write_word(tp, MCU_TYPE_PLA, PLA_PHY_PWR, ocp_data);
  
@@ -7441,7 +7441,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		data = ocp_reg_read(tp, OCP_POWER_CFG);
  		data |= EEE_CLKDIV_EN;
  		ocp_reg_write(tp, OCP_POWER_CFG, data);
-@@ -3687,7 +9096,7 @@ static void r8153b_hw_phy_cfg(struct r8152 *tp)
+@@ -3688,7 +9097,7 @@ static void r8153b_hw_phy_cfg(struct r8152 *tp)
  		ocp_reg_write(tp, OCP_SYSCLK_CFG, clk_div_expo(5));
  		tp->ups_info._250m_ckdiv = true;
  
@@ -7450,7 +7450,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	}
  
  	if (tp->eee_en)
-@@ -3695,14 +9104,50 @@ static void r8153b_hw_phy_cfg(struct r8152 *tp)
+@@ -3696,14 +9105,50 @@ static void r8153b_hw_phy_cfg(struct r8152 *tp)
  
  	r8153_aldps_en(tp, true);
  	r8152b_enable_fc(tp);
@@ -7502,7 +7502,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	rxdy_gated_en(tp, true);
  	r8153_teredo_off(tp);
-@@ -3722,29 +9167,17 @@ static void r8153_first_init(struct r8152 *tp)
+@@ -3723,29 +9168,17 @@ static void r8153_first_init(struct r8152 *tp)
  	ocp_data &= ~MCU_BORW_EN;
  	ocp_write_word(tp, MCU_TYPE_PLA, PLA_SFF_STS_7, ocp_data);
  
@@ -7535,7 +7535,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_TCR0);
  	ocp_data |= TCR0_AUTO_FIFO;
-@@ -3758,40 +9191,36 @@ static void r8153_first_init(struct r8152 *tp)
+@@ -3759,40 +9192,36 @@ static void r8153_first_init(struct r8152 *tp)
  	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RXFIFO_CTRL2, RXFIFO_THR3_NORMAL);
  	/* TX share fifo free credit full threshold */
  	ocp_write_dword(tp, MCU_TYPE_PLA, PLA_TXFIFO_CTRL, TXFIFO_THR_NORMAL2);
@@ -7587,7 +7587,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	switch (tp->version) {
  	case RTL_VER_03:
-@@ -3805,6 +9234,7 @@ static void r8153_enter_oob(struct r8152 *tp)
+@@ -3806,6 +9235,7 @@ static void r8153_enter_oob(struct r8152 *tp)
  
  	case RTL_VER_08:
  	case RTL_VER_09:
@@ -7595,7 +7595,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		/* Clear teredo wake event. bit[15:8] is the teredo wakeup
  		 * type. Set it to zero. bits[7:0] are the W1C bits about
  		 * the events. Set them to all 1 to clear them.
-@@ -3826,11 +9256,17 @@ static void r8153_enter_oob(struct r8152 *tp)
+@@ -3827,11 +9257,17 @@ static void r8153_enter_oob(struct r8152 *tp)
  	ocp_data |= NOW_IS_OOB | DIS_MCU_CLROOB;
  	ocp_write_byte(tp, MCU_TYPE_PLA, PLA_OOB_CTRL, ocp_data);
  
@@ -7613,7 +7613,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  }
  
  static void rtl8153_disable(struct r8152 *tp)
-@@ -3841,106 +9277,263 @@ static void rtl8153_disable(struct r8152 *tp)
+@@ -3842,106 +9278,263 @@ static void rtl8153_disable(struct r8152 *tp)
  	r8153_aldps_en(tp, true);
  }
  
@@ -7946,7 +7946,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		}
  
  		bmcr = BMCR_ANENABLE | BMCR_ANRESTART;
-@@ -3967,6 +9560,65 @@ out:
+@@ -3968,6 +9561,65 @@ out:
  	return ret;
  }
  
@@ -8012,7 +8012,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  static void rtl8152_up(struct r8152 *tp)
  {
  	if (test_bit(RTL8152_UNPLUG, &tp->flags))
-@@ -4002,14 +9654,6 @@ static void rtl8153_up(struct r8152 *tp)
+@@ -4003,14 +9655,6 @@ static void rtl8153_up(struct r8152 *tp)
  	r8153_aldps_en(tp, false);
  	r8153_first_init(tp);
  
@@ -8027,7 +8027,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	ocp_data = ocp_read_word(tp, MCU_TYPE_USB, USB_SSPHYLINK1);
  	ocp_data &= ~DELAY_PHY_PWR_CHG;
  	ocp_write_word(tp, MCU_TYPE_USB, USB_SSPHYLINK1, ocp_data);
-@@ -4032,17 +9676,11 @@ static void rtl8153_up(struct r8152 *tp)
+@@ -4033,17 +9677,11 @@ static void rtl8153_up(struct r8152 *tp)
  
  static void rtl8153_down(struct r8152 *tp)
  {
@@ -8045,7 +8045,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	r8153_u1u2en(tp, false);
  	r8153_u2p3en(tp, false);
  	r8153_power_cut_en(tp, false);
-@@ -4053,8 +9691,6 @@ static void rtl8153_down(struct r8152 *tp)
+@@ -4054,8 +9692,6 @@ static void rtl8153_down(struct r8152 *tp)
  
  static void rtl8153b_up(struct r8152 *tp)
  {
@@ -8054,7 +8054,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	if (test_bit(RTL8152_UNPLUG, &tp->flags))
  		return;
  
-@@ -4065,27 +9701,21 @@ static void rtl8153b_up(struct r8152 *tp)
+@@ -4066,27 +9702,21 @@ static void rtl8153b_up(struct r8152 *tp)
  	r8153_first_init(tp);
  	ocp_write_dword(tp, MCU_TYPE_USB, USB_RX_BUF_TH, RX_THR_B);
  
@@ -8087,7 +8087,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	r8153b_u1u2en(tp, false);
  	r8153_u2p3en(tp, false);
  	r8153b_power_cut_en(tp, false);
-@@ -4094,1557 +9724,11239 @@ static void rtl8153b_down(struct r8152 *tp)
+@@ -4095,1579 +9725,11261 @@ static void rtl8153b_down(struct r8152 *tp)
  	r8153_aldps_en(tp, true);
  }
  
@@ -8453,50 +8453,80 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		return;
 +	}
  
--static void r8152b_init(struct r8152 *tp)
+-static int r8152_led_configuration(struct r8152 *tp)
 -{
--	u32 ocp_data;
--	u16 data;
+-	u32 led_data;
+-	int ret;
 +	r8153b_mcu_spdown_en(tp, true);
 +	r8153b_u1u2en(tp, false);
 +	r8153_u2p3en(tp, false);
 +	r8153b_power_cut_en(tp, false);
 +	r8153_aldps_en(tp, false);
  
--	if (test_bit(RTL8152_UNPLUG, &tp->flags))
--		return;
+-	ret = of_property_read_u32(tp->udev->dev.of_node, "realtek,led-data",
+-								&led_data);
 +	ocp_data = ocp_read_byte(tp, MCU_TYPE_PLA, PLA_OOB_CTRL);
 +	ocp_data &= ~NOW_IS_OOB;
 +	ocp_write_byte(tp, MCU_TYPE_PLA, PLA_OOB_CTRL, ocp_data);
+ 
+-	if (ret)
+-		return ret;
++	/* RX FIFO settings for OOB */
++	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RXFIFO_FULL, 64 / 16);
++	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RX_FIFO_FULL, 1024 / 16);
++	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RX_FIFO_EMPTY, 4096 / 16);
+ 
+-	ocp_write_word(tp, MCU_TYPE_PLA, PLA_LEDSEL, led_data);
++	rtl_disable(tp);
++	rtl_reset_bmu(tp);
+ 
+-	return 0;
+-}
++	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RMS, 1522);
++	ocp_write_byte(tp, MCU_TYPE_PLA, PLA_MTPS, MTPS_DEFAULT);
+ 
+-static void r8152b_init(struct r8152 *tp)
+-{
+-	u32 ocp_data;
+-	u16 data;
++	/* Clear teredo wake event. bit[15:8] is the teredo wakeup
++	 * type. Set it to zero. bits[7:0] are the W1C bits about
++	 * the events. Set them to all 1 to clear them.
++	 */
++	ocp_write_word(tp, MCU_TYPE_PLA, PLA_TEREDO_WAKE_BASE, 0x00ff);
+ 
+-	if (test_bit(RTL8152_UNPLUG, &tp->flags))
+-		return;
++	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_BDC_CR);
++	ocp_data |= ALDPS_PROXY_MODE;
++	ocp_write_word(tp, MCU_TYPE_PLA, PLA_BDC_CR, ocp_data);
  
 -	data = r8152_mdio_read(tp, MII_BMCR);
 -	if (data & BMCR_PDOWN) {
 -		data &= ~BMCR_PDOWN;
 -		r8152_mdio_write(tp, MII_BMCR, data);
 -	}
-+	/* RX FIFO settings for OOB */
-+	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RXFIFO_FULL, 64 / 16);
-+	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RX_FIFO_FULL, 1024 / 16);
-+	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RX_FIFO_EMPTY, 4096 / 16);
++	ocp_data = ocp_read_byte(tp, MCU_TYPE_PLA, PLA_OOB_CTRL);
++	ocp_data |= NOW_IS_OOB | DIS_MCU_CLROOB;
++	ocp_write_byte(tp, MCU_TYPE_PLA, PLA_OOB_CTRL, ocp_data);
  
 -	r8152_aldps_en(tp, false);
-+	rtl_disable(tp);
-+	rtl_reset_bmu(tp);
++	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_SFF_STS_7);
++	ocp_data |= MCU_BORW_EN;
++	ocp_write_word(tp, MCU_TYPE_PLA, PLA_SFF_STS_7, ocp_data);
  
 -	if (tp->version == RTL_VER_01) {
 -		ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_LED_FEATURE);
 -		ocp_data &= ~LED_MODE_MASK;
 -		ocp_write_word(tp, MCU_TYPE_PLA, PLA_LED_FEATURE, ocp_data);
 -	}
-+	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RMS, 1522);
-+	ocp_write_byte(tp, MCU_TYPE_PLA, PLA_MTPS, MTPS_DEFAULT);
++	rtl_rx_vlan_en(tp, true);
++	rxdy_gated_en(tp, false);
  
 -	r8152_power_cut_en(tp, false);
-+	/* Clear teredo wake event. bit[15:8] is the teredo wakeup
-+	 * type. Set it to zero. bits[7:0] are the W1C bits about
-+	 * the events. Set them to all 1 to clear them.
-+	 */
-+	ocp_write_word(tp, MCU_TYPE_PLA, PLA_TEREDO_WAKE_BASE, 0x00ff);
++	ocp_data = ocp_read_dword(tp, MCU_TYPE_PLA, PLA_RCR);
++	ocp_data |= RCR_APM | RCR_AM | RCR_AB;
++	ocp_write_dword(tp, MCU_TYPE_PLA, PLA_RCR, ocp_data);
  
 -	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_PHY_PWR);
 -	ocp_data |= TX_10M_IDLE_EN | PFM_PWM_SWITCH;
@@ -8508,35 +8538,33 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 -	ocp_data = GPHY_STS_MSK | SPEED_DOWN_MSK |
 -		   SPDWN_RXDV_MSK | SPDWN_LINKCHG_MSK;
 -	ocp_write_word(tp, MCU_TYPE_PLA, PLA_GPHY_INTR_IMR, ocp_data);
-+	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_BDC_CR);
-+	ocp_data |= ALDPS_PROXY_MODE;
-+	ocp_write_word(tp, MCU_TYPE_PLA, PLA_BDC_CR, ocp_data);
++	r8153_aldps_en(tp, true);
++}
  
 -	rtl_tally_reset(tp);
-+	ocp_data = ocp_read_byte(tp, MCU_TYPE_PLA, PLA_OOB_CTRL);
-+	ocp_data |= NOW_IS_OOB | DIS_MCU_CLROOB;
-+	ocp_write_byte(tp, MCU_TYPE_PLA, PLA_OOB_CTRL, ocp_data);
++static bool rtl8152_in_nway(struct r8152 *tp)
++{
++	u16 nway_state;
  
 -	/* enable rx aggregation */
 -	ocp_data = ocp_read_word(tp, MCU_TYPE_USB, USB_USB_CTRL);
 -	ocp_data &= ~(RX_AGG_DISABLE | RX_ZERO_EN);
 -	ocp_write_word(tp, MCU_TYPE_USB, USB_USB_CTRL, ocp_data);
-+	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_SFF_STS_7);
-+	ocp_data |= MCU_BORW_EN;
-+	ocp_write_word(tp, MCU_TYPE_PLA, PLA_SFF_STS_7, ocp_data);
-+
-+	rtl_rx_vlan_en(tp, true);
-+	rxdy_gated_en(tp, false);
-+
-+	ocp_data = ocp_read_dword(tp, MCU_TYPE_PLA, PLA_RCR);
-+	ocp_data |= RCR_APM | RCR_AM | RCR_AB;
-+	ocp_write_dword(tp, MCU_TYPE_PLA, PLA_RCR, ocp_data);
-+
-+	r8153_aldps_en(tp, true);
++	ocp_write_word(tp, MCU_TYPE_PLA, PLA_OCP_GPHY_BASE, 0x2000);
++	tp->ocp_base = 0x2000;
++	ocp_write_byte(tp, MCU_TYPE_PLA, 0xb014, 0x4c);		/* phy state */
++	nway_state = ocp_read_word(tp, MCU_TYPE_PLA, 0xb01a);
+ 
+-	r8152_led_configuration(tp);
++	/* bit 15: TXDIS_STATE, bit 14: ABD_STATE */
++	if (nway_state & 0xc000)
++		return false;
++	else
++		return true;
  }
  
 -static void r8153_init(struct r8152 *tp)
-+static bool rtl8152_in_nway(struct r8152 *tp)
++static bool rtl8153_in_nway(struct r8152 *tp)
  {
 -	u32 ocp_data;
 -	u16 data;
@@ -8544,51 +8572,26 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 -
 -	if (test_bit(RTL8152_UNPLUG, &tp->flags))
 -		return;
-+	u16 nway_state;
- 
--	r8153_u1u2en(tp, false);
-+	ocp_write_word(tp, MCU_TYPE_PLA, PLA_OCP_GPHY_BASE, 0x2000);
-+	tp->ocp_base = 0x2000;
-+	ocp_write_byte(tp, MCU_TYPE_PLA, 0xb014, 0x4c);		/* phy state */
-+	nway_state = ocp_read_word(tp, MCU_TYPE_PLA, 0xb01a);
- 
--	for (i = 0; i < 500; i++) {
--		if (ocp_read_word(tp, MCU_TYPE_PLA, PLA_BOOT_CTRL) &
--		    AUTOLOAD_DONE)
--			break;
-+	/* bit 15: TXDIS_STATE, bit 14: ABD_STATE */
-+	if (nway_state & 0xc000)
-+		return false;
-+	else
-+		return true;
-+}
- 
--		msleep(20);
--		if (test_bit(RTL8152_UNPLUG, &tp->flags))
--			break;
--	}
-+static bool rtl8153_in_nway(struct r8152 *tp)
-+{
 +	u16 phy_state = ocp_reg_read(tp, OCP_PHY_STATE) & 0xff;
  
--	data = r8153_phy_status(tp, 0);
+-	r8153_u1u2en(tp, false);
 +	if (phy_state == TXDIS_STATE || phy_state == ABD_STATE)
 +		return false;
 +	else
 +		return true;
 +}
  
--	if (tp->version == RTL_VER_03 || tp->version == RTL_VER_04 ||
--	    tp->version == RTL_VER_05)
--		ocp_reg_write(tp, OCP_ADC_CFG, CKADSEL_L | ADC_EN | EN_EMI_L);
+-	for (i = 0; i < 500; i++) {
+-		if (ocp_read_word(tp, MCU_TYPE_PLA, PLA_BOOT_CTRL) &
+-		    AUTOLOAD_DONE)
+-			break;
 +static void r8156_mdio_force_mode(struct r8152 *tp)
 +{
 +	u16 data;
  
--	data = r8152_mdio_read(tp, MII_BMCR);
--	if (data & BMCR_PDOWN) {
--		data &= ~BMCR_PDOWN;
--		r8152_mdio_write(tp, MII_BMCR, data);
+-		msleep(20);
+-		if (test_bit(RTL8152_UNPLUG, &tp->flags))
+-			break;
 +	/* Select force mode through 0xa5b4 bit 15
 +	 * 0: MDIO force mode
 +	 * 1: MMD force mode
@@ -8600,6 +8603,18 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	}
 +}
  
+-	data = r8153_phy_status(tp, 0);
+-
+-	if (tp->version == RTL_VER_03 || tp->version == RTL_VER_04 ||
+-	    tp->version == RTL_VER_05)
+-		ocp_reg_write(tp, OCP_ADC_CFG, CKADSEL_L | ADC_EN | EN_EMI_L);
+-
+-	data = r8152_mdio_read(tp, MII_BMCR);
+-	if (data & BMCR_PDOWN) {
+-		data &= ~BMCR_PDOWN;
+-		r8152_mdio_write(tp, MII_BMCR, data);
+-	}
+-
 -	data = r8153_phy_status(tp, PHY_STAT_LAN_ON);
 -
 -	r8153_u2p3en(tp, false);
@@ -8772,6 +8787,8 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		rtnl_unlock();
 +		goto out1;
  	}
+-
+-	r8152_led_configuration(tp);
  }
  
 -static void r8153b_init(struct r8152 *tp)
@@ -8790,42 +8807,39 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 -		if (ocp_read_word(tp, MCU_TYPE_PLA, PLA_BOOT_CTRL) &
 -		    AUTOLOAD_DONE)
 -			break;
-+	if (usb_autopm_get_interface(tp->intf) < 0)
-+		return;
- 
+-
 -		msleep(20);
 -		if (test_bit(RTL8152_UNPLUG, &tp->flags))
 -			break;
 -	}
-+	mutex_lock(&tp->control);
++	if (usb_autopm_get_interface(tp->intf) < 0)
++		return;
  
 -	data = r8153_phy_status(tp, 0);
-+	tp->rtl_ops.hw_phy_cfg(tp);
++	mutex_lock(&tp->control);
  
 -	data = r8152_mdio_read(tp, MII_BMCR);
 -	if (data & BMCR_PDOWN) {
 -		data &= ~BMCR_PDOWN;
 -		r8152_mdio_write(tp, MII_BMCR, data);
 -	}
++	tp->rtl_ops.hw_phy_cfg(tp);
+ 
+-	data = r8153_phy_status(tp, PHY_STAT_LAN_ON);
 +	rtl8152_set_speed(tp, tp->autoneg, tp->speed, tp->duplex,
 +			  tp->advertising);
  
--	data = r8153_phy_status(tp, PHY_STAT_LAN_ON);
-+	mutex_unlock(&tp->control);
- 
 -	r8153_u2p3en(tp, false);
-+	usb_autopm_put_interface(tp->intf);
-+}
++	mutex_unlock(&tp->control);
  
 -	/* MSC timer = 0xfff * 8ms = 32760 ms */
 -	ocp_write_word(tp, MCU_TYPE_USB, USB_MSC_TIMER, 0x0fff);
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,20)
++	usb_autopm_put_interface(tp->intf);
++}
  
 -	/* U1/U2/L1 idle timer. 500 us */
 -	ocp_write_word(tp, MCU_TYPE_USB, USB_U1U2_TIMER, 500);
-+static void rtl_work_func_t(void *data)
-+{
-+	struct r8152 *tp = (struct r8152 *)data;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,20)
  
 -	r8153b_power_cut_en(tp, false);
 -	r8153b_ups_en(tp, false);
@@ -8833,22 +8847,23 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 -	rtl_runtime_suspend_enable(tp, false);
 -	r8153b_u1u2en(tp, true);
 -	usb_enable_lpm(tp->udev);
-+	__rtl_work_func(tp);
-+}
++static void rtl_work_func_t(void *data)
++{
++	struct r8152 *tp = (struct r8152 *)data;
  
 -	/* MAC clock speed down */
 -	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_MAC_PWR_CTRL2);
 -	ocp_data |= MAC_CLK_SPDWN_EN;
 -	ocp_write_word(tp, MCU_TYPE_PLA, PLA_MAC_PWR_CTRL2, ocp_data);
-+static void rtl_hw_phy_work_func_t(void *data)
-+{
-+	struct r8152 *tp = (struct r8152 *)data;
++	__rtl_work_func(tp);
++}
  
 -	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_MAC_PWR_CTRL3);
 -	ocp_data &= ~PLA_MCU_SPDWN_EN;
 -	ocp_write_word(tp, MCU_TYPE_PLA, PLA_MAC_PWR_CTRL3, ocp_data);
-+	__rtl_hw_phy_work_func(tp);
-+}
++static void rtl_hw_phy_work_func_t(void *data)
++{
++	struct r8152 *tp = (struct r8152 *)data;
  
 -	if (tp->version == RTL_VER_09) {
 -		/* Disable Test IO for 32QFN */
@@ -8858,26 +8873,30 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 -			ocp_write_word(tp, MCU_TYPE_PLA, PLA_PHY_PWR, ocp_data);
 -		}
 -	}
-+#else
++	__rtl_hw_phy_work_func(tp);
++}
  
 -	set_bit(GREEN_ETHERNET, &tp->flags);
-+static void rtl_work_func_t(struct work_struct *work)
-+{
-+	struct r8152 *tp = container_of(work, struct r8152, schedule.work);
++#else
  
 -	/* rx aggregation */
 -	ocp_data = ocp_read_word(tp, MCU_TYPE_USB, USB_USB_CTRL);
 -	ocp_data &= ~(RX_AGG_DISABLE | RX_ZERO_EN);
 -	ocp_write_word(tp, MCU_TYPE_USB, USB_USB_CTRL, ocp_data);
++static void rtl_work_func_t(struct work_struct *work)
++{
++	struct r8152 *tp = container_of(work, struct r8152, schedule.work);
+ 
+-	rtl_tally_reset(tp);
 +	__rtl_work_func(tp);
 +}
  
--	rtl_tally_reset(tp);
+-	tp->coalesce = 15000;	/* 15 us */
 +static void rtl_hw_phy_work_func_t(struct work_struct *work)
 +{
 +	struct r8152 *tp = container_of(work, struct r8152, hw_phy_work.work);
  
--	tp->coalesce = 15000;	/* 15 us */
+-	r8152_led_configuration(tp);
 +	__rtl_hw_phy_work_func(tp);
  }
  
@@ -9317,24 +9336,28 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
 -static int rtl8152_resume(struct usb_interface *intf)
 +static void rtl_tally_reset(struct r8152 *tp)
- {
--	struct r8152 *tp = usb_get_intfdata(intf);
--	int ret;
--
--	mutex_lock(&tp->control);
--
--	if (test_bit(SELECTIVE_SUSPEND, &tp->flags))
--		ret = rtl8152_runtime_resume(tp);
--	else
--		ret = rtl8152_system_resume(tp);
--
--	mutex_unlock(&tp->control);
++{
 +	u32 ocp_data;
- 
--	return ret;
++
 +	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_RSTTALLY);
 +	ocp_data |= TALLY_RESET;
 +	ocp_write_word(tp, MCU_TYPE_PLA, PLA_RSTTALLY, ocp_data);
++}
++
++static int r8152_led_configuration(struct r8152 *tp)
++{
++	u32 led_data;
++	int ret;
++
++	ret = of_property_read_u32(tp->udev->dev.of_node, "realtek,led-data",
++								&led_data);
++
++	if (ret)
++		return ret;
++	
++	ocp_write_word(tp, MCU_TYPE_PLA, PLA_LEDSEL, led_data);
++
++	return 0;
 +}
 +
 +static void rtl_disable_spi(struct r8152 *tp)
@@ -9413,6 +9436,8 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +	ocp_data = ocp_read_word(tp, MCU_TYPE_USB, USB_USB_CTRL);
 +	ocp_data &= ~(RX_AGG_DISABLE | RX_ZERO_EN);
 +	ocp_write_word(tp, MCU_TYPE_USB, USB_USB_CTRL, ocp_data);
++
++	r8152_led_configuration(tp);
 +}
 +
 +static void r8153_init(struct r8152 *tp)
@@ -9550,6 +9575,8 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		tp->coalesce = COALESCE_SLOW;
 +		break;
 +	}
++
++	r8152_led_configuration(tp);
 +}
 +
 +static void r8153b_init(struct r8152 *tp)
@@ -9642,6 +9669,8 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +	rtl_tally_reset(tp);
 +
 +	tp->coalesce = 15000;	/* 15 us */
++
++	r8152_led_configuration(tp);
 +}
 +
 +static void r8153c_init(struct r8152 *tp)
@@ -17476,12 +17505,11 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +	mutex_unlock(&tp->control);
 +
 +	return ret;
- }
- 
- static int rtl8152_reset_resume(struct usb_interface *intf)
++}
++
++static int rtl8152_reset_resume(struct usb_interface *intf)
  {
--	struct r8152 *tp = usb_get_intfdata(intf);
-+	struct r8152 *tp = usb_get_intfdata(intf);
+ 	struct r8152 *tp = usb_get_intfdata(intf);
 +
 +	clear_bit(SELECTIVE_SUSPEND, &tp->flags);
 +	rtl_reset_ocp_base(tp);
@@ -18321,17 +18349,11 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(5,15,0) */
 +{
 +	struct r8152 *tp = netdev_priv(netdev);
- 
--	clear_bit(SELECTIVE_SUSPEND, &tp->flags);
--	tp->rtl_ops.init(tp);
--	queue_delayed_work(system_long_wq, &tp->hw_phy_work, 0);
--	set_ethernet_addr(tp);
--	return rtl8152_resume(intf);
++
 +	ring->rx_max_pending = RTL8152_RX_MAX_PENDING;
 +	ring->rx_pending = tp->rx_pending;
- }
- 
--static void rtl8152_get_wol(struct net_device *dev, struct ethtool_wolinfo *wol)
++}
++
 +static int rtl8152_set_ringparam(struct net_device *netdev,
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(5,17,0)
 +				 struct ethtool_ringparam *ring)
@@ -18340,8 +18362,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +				 struct kernel_ethtool_ringparam *kernel_ring,
 +				 struct netlink_ext_ack *extack)
 +#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(5,15,0) */
- {
--	struct r8152 *tp = netdev_priv(dev);
++{
 +	struct r8152 *tp = netdev_priv(netdev);
 +
 +	if (ring->rx_pending < (RTL8152_MAX_RX * 2))
@@ -18367,14 +18388,10 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +	struct r8152 *tp = netdev_priv(netdev);
 +	u16 bmcr, lcladv, rmtadv;
 +	u8 cap;
- 
- 	if (usb_autopm_get_interface(tp->intf) < 0)
- 		return;
- 
--	if (!rtl_can_wakeup(tp)) {
--		wol->supported = 0;
--		wol->wolopts = 0;
--	} else {
++
++	if (usb_autopm_get_interface(tp->intf) < 0)
++		return;
++
 +	mutex_lock(&tp->control);
 +
 +	bmcr = r8152_mdio_read(tp, MII_BMCR);
@@ -18647,9 +18664,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		if (ret < 0)
 +			break;
 +
- 		mutex_lock(&tp->control);
--		wol->supported = WAKE_ANY;
--		wol->wolopts = __rtl_get_wol(tp);
++		mutex_lock(&tp->control);
 +		tp->rtk_enable_diag++;
 +		netif_info(tp, drv, netdev, "enable rtk diag %d\n",
 +			   tp->rtk_enable_diag);
@@ -18750,7 +18765,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +
 +		mutex_lock(&tp->control);
 +		r8152_mdio_write(tp, data->reg_num, data->val_in);
- 		mutex_unlock(&tp->control);
++		mutex_unlock(&tp->control);
 +		break;
 +
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(5,15,0)
@@ -18765,25 +18780,22 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +
 +	default:
 +		ret = -EOPNOTSUPP;
- 	}
- 
- 	usb_autopm_put_interface(tp->intf);
++	}
++
++	usb_autopm_put_interface(tp->intf);
 +
 +out:
 +	return ret;
- }
- 
--static int rtl8152_set_wol(struct net_device *dev, struct ethtool_wolinfo *wol)
++}
++
 +static int rtl8152_change_mtu(struct net_device *dev, int new_mtu)
- {
- 	struct r8152 *tp = netdev_priv(dev);
++{
++	struct r8152 *tp = netdev_priv(dev);
  	int ret;
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(4,10,0)
 +	u32 max_mtu;
 +#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(4,10,0) */
- 
--	if (!rtl_can_wakeup(tp))
--		return -EOPNOTSUPP;
++
 +	switch (tp->version) {
 +	case RTL_VER_01:
 +	case RTL_VER_02:
@@ -18797,8 +18809,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +	default:
 +		break;
 +	}
- 
--	if (wol->wolopts & ~WAKE_ANY)
++
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(4,10,0)
 +	switch (tp->version) {
 +	case RTL_VER_03:
@@ -18828,18 +18839,19 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +	}
 +
 +	if (new_mtu < 68 || new_mtu > max_mtu)
- 		return -EINVAL;
++		return -EINVAL;
 +#endif /* LINUX_VERSION_CODE < KERNEL_VERSION(4,10,0) */
- 
- 	ret = usb_autopm_get_interface(tp->intf);
- 	if (ret < 0)
--		goto out_set_wol;
++
++	ret = usb_autopm_get_interface(tp->intf);
++	if (ret < 0)
 +		return ret;
  
  	mutex_lock(&tp->control);
  
--	__rtl_set_wol(tp, wol->wolopts);
--	tp->saved_wolopts = wol->wolopts & WAKE_ANY;
+-	if (test_bit(SELECTIVE_SUSPEND, &tp->flags))
+-		ret = rtl8152_runtime_resume(tp);
+-	else
+-		ret = rtl8152_system_resume(tp);
 +	dev->mtu = new_mtu;
 +
 +	if (netif_running(dev)) {
@@ -18862,13 +18874,12 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	mutex_unlock(&tp->control);
  
- 	usb_autopm_put_interface(tp->intf);
- 
--out_set_wol:
++	usb_autopm_put_interface(tp->intf);
++
  	return ret;
  }
  
--static u32 rtl8152_get_msglevel(struct net_device *dev)
+-static int rtl8152_reset_resume(struct usb_interface *intf)
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,29)
 +static const struct net_device_ops rtl8152_netdev_ops = {
 +	.ndo_open		= rtl8152_open,
@@ -18898,45 +18909,59 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +
 +static void rtl8152_unload(struct r8152 *tp)
  {
--	struct r8152 *tp = netdev_priv(dev);
+-	struct r8152 *tp = usb_get_intfdata(intf);
 +	if (test_bit(RTL8152_UNPLUG, &tp->flags))
 +		return;
  
--	return tp->msg_enable;
+-	clear_bit(SELECTIVE_SUSPEND, &tp->flags);
+-	tp->rtl_ops.init(tp);
+-	queue_delayed_work(system_long_wq, &tp->hw_phy_work, 0);
+-	set_ethernet_addr(tp);
+-	return rtl8152_resume(intf);
 +	r8152_power_cut_en(tp, false);
  }
  
--static void rtl8152_set_msglevel(struct net_device *dev, u32 value)
+-static void rtl8152_get_wol(struct net_device *dev, struct ethtool_wolinfo *wol)
 +static void rtl8153_unload(struct r8152 *tp)
  {
 -	struct r8152 *tp = netdev_priv(dev);
+-
+-	if (usb_autopm_get_interface(tp->intf) < 0)
 +	if (test_bit(RTL8152_UNPLUG, &tp->flags))
-+		return;
+ 		return;
  
--	tp->msg_enable = value;
+-	if (!rtl_can_wakeup(tp)) {
+-		wol->supported = 0;
+-		wol->wolopts = 0;
+-	} else {
+-		mutex_lock(&tp->control);
+-		wol->supported = WAKE_ANY;
+-		wol->wolopts = __rtl_get_wol(tp);
+-		mutex_unlock(&tp->control);
+-	}
 +	r8153_power_cut_en(tp, false);
- }
++}
  
--static void rtl8152_get_drvinfo(struct net_device *netdev,
--				struct ethtool_drvinfo *info)
+-	usb_autopm_put_interface(tp->intf);
 +static void rtl8153b_unload(struct r8152 *tp)
- {
--	struct r8152 *tp = netdev_priv(netdev);
++{
 +	if (test_bit(RTL8152_UNPLUG, &tp->flags))
 +		return;
- 
--	strlcpy(info->driver, MODULENAME, sizeof(info->driver));
--	strlcpy(info->version, DRIVER_VERSION, sizeof(info->version));
--	usb_make_path(tp->udev, info->bus_info, sizeof(info->bus_info));
++
 +	r8153b_power_cut_en(tp, false);
 +	rtl_set_dbg_info_state(tp, DGB_DRV_STATE_UNLOAD);
-+}
-+
+ }
+ 
+-static int rtl8152_set_wol(struct net_device *dev, struct ethtool_wolinfo *wol)
 +static int rtl_ops_init(struct r8152 *tp)
-+{
+ {
+-	struct r8152 *tp = netdev_priv(dev);
+-	int ret;
 +	struct rtl_ops *ops = &tp->rtl_ops;
 +	int ret = 0;
-+
+ 
+-	if (!rtl_can_wakeup(tp))
+-		return -EOPNOTSUPP;
 +	switch (tp->version) {
 +	case RTL_VER_01:
 +	case RTL_VER_02:
@@ -18958,7 +18983,9 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		tp->eee_en		= true;
 +		tp->eee_adv		= MDIO_EEE_100TX;
 +		break;
-+
+ 
+-	if (wol->wolopts & ~WAKE_ANY)
+-		return -EINVAL;
 +	case RTL_VER_03:
 +	case RTL_VER_04:
 +	case RTL_VER_05:
@@ -18984,7 +19011,10 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		tp->eee_en		= true;
 +		tp->eee_adv		= MDIO_EEE_1000T | MDIO_EEE_100TX;
 +		break;
-+
+ 
+-	ret = usb_autopm_get_interface(tp->intf);
+-	if (ret < 0)
+-		goto out_set_wol;
 +	case RTL_VER_08:
 +	case RTL_VER_09:
 +		ops->init		= r8153b_init;
@@ -19005,7 +19035,8 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		tp->eee_en		= true;
 +		tp->eee_adv		= MDIO_EEE_1000T | MDIO_EEE_100TX;
 +		break;
-+
+ 
+-	mutex_lock(&tp->control);
 +	case RTL_TEST_01:
 +		ops->init		= r8156_init;
 +		ops->enable		= rtl8156_enable;
@@ -19023,7 +19054,9 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		tp->rx_buf_sz		= 48 * 1024;
 +		tp->support_2500full	= 1;
 +		break;
-+
+ 
+-	__rtl_set_wol(tp, wol->wolopts);
+-	tp->saved_wolopts = wol->wolopts & WAKE_ANY;
 +	case RTL_VER_11:
 +		tp->eee_en		= true;
 +		tp->eee_adv		= MDIO_EEE_1000T | MDIO_EEE_100TX;
@@ -19046,7 +19079,8 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		tp->rx_buf_sz		= 48 * 1024;
 +		tp->support_2500full	= 1;
 +		break;
-+
+ 
+-	mutex_unlock(&tp->control);
 +	case RTL_VER_12:
 +	case RTL_VER_13:
 +		tp->support_2500full	= 1;
@@ -19070,7 +19104,8 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		ops->change_mtu		= rtl8156_change_mtu;
 +		tp->rx_buf_sz		= 48 * 1024;
 +		break;
-+
+ 
+-	usb_autopm_put_interface(tp->intf);
 +	case RTL_VER_14:
 +		ops->init		= r8153c_init;
 +		ops->enable		= rtl8153_enable;
@@ -19096,29 +19131,43 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		dev_err(&tp->intf->dev, "Unknown Device\n");
 +		break;
 +	}
-+
-+	return ret;
-+}
-+
+ 
+-out_set_wol:
+ 	return ret;
+ }
+ 
+-static u32 rtl8152_get_msglevel(struct net_device *dev)
 +static u8 __rtl_get_hw_ver(struct usb_device *udev)
-+{
+ {
+-	struct r8152 *tp = netdev_priv(dev);
 +	u32 ocp_data = 0;
 +	__le32 *tmp;
 +	u8 version;
 +	int ret;
-+
+ 
+-	return tp->msg_enable;
+-}
 +	tmp = kmalloc(sizeof(*tmp), GFP_KERNEL);
 +	if (!tmp)
 +		return 0;
-+
+ 
+-static void rtl8152_set_msglevel(struct net_device *dev, u32 value)
+-{
+-	struct r8152 *tp = netdev_priv(dev);
 +	ret = usb_control_msg(udev, usb_rcvctrlpipe(udev, 0),
 +			      RTL8152_REQ_GET_REGS, RTL8152_REQT_READ,
 +			      PLA_TCR0, MCU_TYPE_PLA, tmp, sizeof(*tmp), 500);
 +	if (ret > 0)
 +		ocp_data = (__le32_to_cpu(*tmp) >> 16) & VERSION_MASK;
-+
+ 
+-	tp->msg_enable = value;
+-}
 +	kfree(tmp);
-+
+ 
+-static void rtl8152_get_drvinfo(struct net_device *netdev,
+-				struct ethtool_drvinfo *info)
+-{
+-	struct r8152 *tp = netdev_priv(netdev);
 +	switch (ocp_data) {
 +	case 0x4c00:
 +		version = RTL_VER_01;
@@ -19173,7 +19222,10 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
 +		dev_info(&udev->dev, "Unknown version 0x%04x\n", ocp_data);
 +		break;
 +	}
-+
+ 
+-	strlcpy(info->driver, MODULENAME, sizeof(info->driver));
+-	strlcpy(info->version, DRIVER_VERSION, sizeof(info->version));
+-	usb_make_path(tp->udev, info->bus_info, sizeof(info->bus_info));
 +	return version;
  }
  
@@ -20473,7 +20525,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	usb_reset_device(udev);
  	netdev = alloc_etherdev(sizeof(struct r8152));
-@@ -5662,6 +20974,12 @@ static int rtl8152_probe(struct usb_interface *intf,
+@@ -5685,6 +20997,12 @@ static int rtl8152_probe(struct usb_interface *intf,
  	tp->intf = intf;
  	tp->version = version;
  
@@ -20486,7 +20538,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	switch (version) {
  	case RTL_VER_01:
  	case RTL_VER_02:
-@@ -5680,16 +20998,40 @@ static int rtl8152_probe(struct usb_interface *intf,
+@@ -5703,16 +21021,40 @@ static int rtl8152_probe(struct usb_interface *intf,
  	mutex_init(&tp->control);
  	INIT_DELAYED_WORK(&tp->schedule, rtl_work_func_t);
  	INIT_DELAYED_WORK(&tp->hw_phy_work, rtl_hw_phy_work_func_t);
@@ -20528,7 +20580,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	netdev->hw_features = NETIF_F_RXCSUM | NETIF_F_IP_CSUM | NETIF_F_SG |
  			      NETIF_F_TSO | NETIF_F_FRAGLIST |
  			      NETIF_F_IPV6_CSUM | NETIF_F_TSO6 |
-@@ -5697,32 +21039,55 @@ static int rtl8152_probe(struct usb_interface *intf,
+@@ -5720,32 +21062,55 @@ static int rtl8152_probe(struct usb_interface *intf,
  	netdev->vlan_features = NETIF_F_SG | NETIF_F_IP_CSUM | NETIF_F_TSO |
  				NETIF_F_HIGHDMA | NETIF_F_FRAGLIST |
  				NETIF_F_IPV6_CSUM | NETIF_F_TSO6;
@@ -20594,7 +20646,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  
  	tp->mii.dev = netdev;
  	tp->mii.mdio_read = read_mii_word;
-@@ -5730,13 +21095,22 @@ static int rtl8152_probe(struct usb_interface *intf,
+@@ -5753,13 +21118,22 @@ static int rtl8152_probe(struct usb_interface *intf,
  	tp->mii.phy_id_mask = 0x3f;
  	tp->mii.reg_num_mask = 0x1f;
  	tp->mii.phy_id = R8152_PHY_ID;
@@ -20618,7 +20670,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		tp->advertising |= RTL_ADVERTISED_1000_FULL;
  	}
  	tp->duplex = DUPLEX_FULL;
-@@ -5753,14 +21127,16 @@ static int rtl8152_probe(struct usb_interface *intf,
+@@ -5776,14 +21150,16 @@ static int rtl8152_probe(struct usb_interface *intf,
  
  	tp->rtl_ops.init(tp);
  	queue_delayed_work(system_long_wq, &tp->hw_phy_work, 0);
@@ -20638,7 +20690,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  		goto out1;
  	}
  
-@@ -5769,11 +21145,35 @@ static int rtl8152_probe(struct usb_interface *intf,
+@@ -5792,11 +21168,35 @@ static int rtl8152_probe(struct usb_interface *intf,
  	else
  		device_set_wakeup_enable(&udev->dev, false);
  
@@ -20674,7 +20726,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	tasklet_kill(&tp->tx_tl);
  	usb_set_intfdata(intf, NULL);
  out:
-@@ -5787,53 +21187,89 @@ static void rtl8152_disconnect(struct usb_interface *intf)
+@@ -5810,53 +21210,89 @@ static void rtl8152_disconnect(struct usb_interface *intf)
  
  	usb_set_intfdata(intf, NULL);
  	if (tp) {
@@ -20800,7 +20852,7 @@ This is the driver for RTL815x USB to Ethernet from Realtek v2.17.1
  	{}
  };
  
-@@ -5850,10 +21286,76 @@ static struct usb_driver rtl8152_driver = {
+@@ -5873,10 +21309,76 @@ static struct usb_driver rtl8152_driver = {
  	.pre_reset =	rtl8152_pre_reset,
  	.post_reset =	rtl8152_post_reset,
  	.supports_autosuspend = 1,
